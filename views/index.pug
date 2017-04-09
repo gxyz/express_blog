@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .row.main
+    .col-md-8.col-md-offset-2
+      each post in posts
+        article.article
+          h2.article-title
+            a(href="/posts/" + post.title)= post.title
+          time= post.pub_date.toLocaleString()
+          p.article-post!= post.summary
+          a.more(href="/posts/" + post.title) 更多
+            span(class="glyphicon glyphicon-chevron-right" aria-hidden="true")
+
+              
+

@@ -1,0 +1,70 @@
+body {
+  font: 14px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+/*a {
+  color: #00B7FF;
+}*/
+
+.my-nav,
+.navbar {
+  background-color: #fff;
+  border: 0;
+}
+
+.my-nav {
+  color: #fff;
+  box-shadow: 0 0 5px 4px #ccc;
+}
+
+
+.main.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.article {
+  /*margin: 40px 30px;*/
+  box-shadow: 0 0 5px 2px #ccc;
+  margin-bottom: 50px;
+  min-height: 300px;
+  position: relative;
+}
+
+.article time,
+.article p {
+  margin: 0 50px 40px 50px;
+}
+
+.article h2 {
+  height: 60px;
+  line-height: 60px;  
+  margin: 0;
+  text-indent: 1em;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.article time {
+  /*font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
+  font-style: italic;
+  color: #888;
+}
+
+.article p {
+  text-indent: 2em;
+  margin-top: 40px;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.article .more {
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
+}
+
+.article a.more:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  form(action="/posts/add-post" method="post")
+    div.form-group
+        label(for="title") 标题 
+        input(type="text" class="form-control" id="title" name="title" placeholder="输入标题")
+    div.form-group
+        textarea(class="form-control" rows="3" name="content" placeholder="输入文章内容")
+    div.form-group
+        label(for="tags") 标题 
+        input(type="text" class="form-control" id="tags" name="tags" placeholder="输入标签，以逗号分隔")
+    button(type="submit" class="btn btn-primary") 提交          

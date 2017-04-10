@@ -1,15 +1,16 @@
 extends ../layout
 
 block content
-    form(action="/auth/signin", method="post")
-        div.form-group
-            label(for="email") 邮箱
-            input(type="email" class="form-control" id="email" name="email" placeholder="Email")
-        div.form-group 
-            label(for="password") 密码
-            input(type="password" class="form-control" id="password" name="password" placeholder="Password")      
-        div.form-group
-            label 记住我 
-                input(type="checkbox")
-        button(type="submit" class="btn btn-default") 登陆
-        button(type="button" class="btn btn-success") 注册
+    div.form-position
+        form(action="/auth/signin", method="post")
+            div.form-group
+                label(for="email") 邮箱
+                input(type="email" class="form-control" id="email" name="email" placeholder="Email")
+            div.form-group 
+                label(for="password") 密码
+                input(type="password" class="form-control" id="password" name="password" placeholder="Password")      
+            div.form-group
+                label 记住我 
+                    input(type="checkbox")
+            button(type="submit" class="btn btn-success signin-btn") 登陆
+            button(type="button" class="btn btn-default signup-btn") 注册

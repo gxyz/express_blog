@@ -14,7 +14,7 @@ router.get('/:title', function(req, res, next) {
     if (err) {
       return next(err);
     } else {
-      res.send(post.html);
+      res.render('post', {post: post});
     }
   });  
 })

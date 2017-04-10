@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .row.main
+    .col-md-8.col-md-offset-2
+        article.article.details
+            h1.article-title= post.title
+            time= post.pub_date.toLocaleString()
+            each tag in post.tags
+                span.label.label-info.tag= tag
+            p!= post.html
+
+              
+

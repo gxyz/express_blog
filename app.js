@@ -15,6 +15,7 @@ pug.filters = {
     return str.replace(/<[^<>]*>/g, '').slice(0, 200) + "..."
   }
 }
+
 mongoose.connect('mongodb://localhost/test');
 
 

@@ -10,18 +10,23 @@ var userSchema = new Schema({
 })
 
 var commentSchema = new Schema({
-    author: userSchema,
+    author: Schema.Types.ObjectId,
     pub_date: {type: Date, default: Date.now},
     content: String,
+    postId: Schema.Types.ObjectId
 })
 
 var categorySchema = new Schema({
     name: String
 })
 
+var tagScheme = new Schema({
+    name: String
+})
+
 var postSchema = new Schema({
     title: String,
-    author: userSchema,
+    author: Schema.Types.ObjectId,
     content: String,
     html: String,
     summary: String,
@@ -31,12 +36,18 @@ var postSchema = new Schema({
 });
 
 
+
+// 创建Model
 var Post = mongoose.model('Post', postSchema);
 var User = mongoose.model('User', userSchema);
+var Tag = mongoose.model('Tag', tagScheme);
+var Comment = mongoose.model('Comment', commentSchema);
 
 module.exports = {
     Post: Post,
-    User: User
+    User: User,
+    Tag: Tag,
+    Comment: Comment
 }
 
 

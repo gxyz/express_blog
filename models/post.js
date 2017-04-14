@@ -10,11 +10,21 @@ var userSchema = new Schema({
 })
 
 var commentSchema = new Schema({
-    author: Schema.Types.ObjectId,
+    author: userSchema,
     pub_date: {type: Date, default: Date.now},
     content: String,
     postId: Schema.Types.ObjectId
 })
+
+// commentSchema.methods.getAuthor = function() {
+//     return this.model('User').findOne({_id: this.author}, function(err, user) {
+//         if (err) {
+//             return err;
+//         } else {
+//             return user;
+//         }
+//     });
+// } 
 
 var categorySchema = new Schema({
     name: String

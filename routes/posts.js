@@ -27,7 +27,7 @@ router.get('/:id', function(req, res, next) {
 
 router.post('/:id', checkLogin, function(req, res, next) {
   var comment = new models.Comment({
-    author: req.session.user._id,
+    author: req.session.user,
     content: req.body.content,
     postId: req.params.id
   });

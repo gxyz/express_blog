@@ -15,7 +15,23 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/tags', function(req, res, next) {
-  
+  models.Tag.find({}, function(err, tags){
+  	if (err) {
+  		return next(err)
+  	} else {
+  		res.render('tags', {title: '标签页', tags: tags});
+  	}
+  })
+})
+
+router.get('/tags/:name', function(req, res, next) {
+    models.Post.find({tags: req.params.name}, function(err, posts) {
+        if (err) {
+            return next(err);
+        }else {
+            res.render('tag-posts', {posts, posts});
+        }
+    })
 })
 
 module.exports = router;

@@ -11,6 +11,16 @@ router.get('/add-post', checkLogin, function(req, res, next) {
 
 router.post('/add-post', checkLogin, function(req, res, next) {
 
+  var tags = req.body.tags.replace(/\s+/g, "").split(",") || "default";
+  tags.map(function(tag) {
+    var t = new models.Tag({
+      name: tag
+    })
+    t.save(function(err){
+      console.log(err);
+    });
+  })
+
   var post = new models.Post({
     title: req.body.title, 
     author: req.session.user._id,  

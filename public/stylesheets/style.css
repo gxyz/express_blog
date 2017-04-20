@@ -68,20 +68,29 @@ body {
 
 .details {
     /*font-family: 'Open Sans','Helvetica Neue',Arial,'Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;*/
+    padding: 50px;
 }
 
 .details .article-title{
   text-align: center;
 }
 
-.details .tag {
+.details .tags {
   margin-right: 10px;
   float: right;
 }
 
+.details .post-content {
+  margin-top: 50px;
+}
 
 .details time {
   margin-left: 10px;
+}
+
+.details pre code {
+  font-family: "Hack", "console", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+  text-indent: 0;
 }
 
 /* form position */
@@ -100,3 +109,20 @@ body {
 .signup-btn {
   margin: 0 10px;
 }*/
+
+/*tags page*/
+.tag-list {
+  font-family: "Hack", "console", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana;
+}
+
+.tag-list li {
+  display: inline-block;
+  margin: 20px;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 5px
+}
+
+.tag-list li:hover {
+  background-color: #eee;
+}

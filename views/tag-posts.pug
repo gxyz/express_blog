@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    div(class="ui  grid")
+        div.two.wide.column
+        div.twelve.wide.column
+          each post in posts
+            article.article
+              h2.article-title
+                a(href="/posts/" + post._id)= post.title
+              time.article-time= post.pub_date.toLocaleString()
+              p.article-post!= post.summary
+              a.more(href="/posts/" + post._id) 更多
+                i(class="angle right icon")
+        div.two.wide.column

@@ -31,7 +31,10 @@ var categorySchema = new Schema({
 })
 
 var tagScheme = new Schema({
-    name: String
+    name: {
+        type: String,
+        unique: true
+    }
 })
 
 var postSchema = new Schema({

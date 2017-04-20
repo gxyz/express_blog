@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    div(class="ui  grid")
+        div.two.wide.column
+        div.twelve.wide.column
+            ul.tag-list
+                each tag in tags
+                    li
+                        a(href="/tags/"+tag.name)= tag.name
+        div.two.wide.column

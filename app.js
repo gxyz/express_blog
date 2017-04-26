@@ -9,6 +9,11 @@ var pug = require('pug');
 var session = require("express-session");
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
+var multer  = require('multer');   // 上传文件中间件
+// var upload = multer({dest: 'uploads/'})
+
+
+mongoose.connect('mongodb://localhost/test');
 
 pug.filters = {
   'truncate': function(str, num) {
@@ -16,17 +21,16 @@ pug.filters = {
   }
 }
 
-mongoose.connect('mongodb://localhost/test');
 
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var posts = require('./routes/posts');
 var auth = require('./routes/auth');
 var admin = require('./routes/admin');
+var users = require('./routes/users');
+
 
 var models = require("./models/post");
-
 var app = express();
 
 // view engine setup
@@ -40,6 +44,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 // session中间件
 app.use(session({
   name: 'SESSION_KEY',   // 设置 cookie 中保存 session id 的字段名称
@@ -66,10 +71,10 @@ app.use(function(req, res, next) {
 })
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/posts', posts);
 app.use('/auth', auth);
 app.use('/admin', admin);
+app.use('/users', users);
 
 // 404 错误处理
 // catch 404 and forward to error handler

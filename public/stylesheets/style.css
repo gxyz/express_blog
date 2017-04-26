@@ -49,7 +49,7 @@ body {
 .article .article-post {
   text-indent: 2em;
   margin-top: 40px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   line-height: 1.5;
   letter-spacing: 1px;
 }
@@ -125,4 +125,20 @@ body {
 
 .tag-list li:hover {
   background-color: #eee;
+}
+
+/* user page */
+.user-info {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 50px 100px;
+}
+
+.user-info .change-avatar {
+  margin-left: 45px;
+  margin-top: 10px;
+}
+
+.user-action {
+  
 }

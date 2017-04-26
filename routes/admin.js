@@ -5,6 +5,8 @@ var models = require("../models/post");
 var marked = require('marked');
 var checkLogin = require('../middlewares/check').checkLogin;
 
+
+
 router.get('/add-post', checkLogin, function(req, res, next) {
   res.render('add-post');
 })

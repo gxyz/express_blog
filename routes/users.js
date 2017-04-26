@@ -1,32 +1,47 @@
 var express = require('express');
 var router = express.Router();
 var models = require("../models/post");
+var checkLogin = require('../middlewares/check').checkLogin;
+var multer  = require('multer');   // 上传文件中间件
+var uuidV1 = require('uuid/v1');
+// var upload = multer({dest: 'public/uploads'})
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
-router.get('/add-user', function(req, res, next) {
-  var user = new models.User({name: "gdb", password: "gaodebao712", email: "1178717119@qq.com", permission: 1})
-  user.save(function(err) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('添加成功');   
+var storage = multer.diskStorage({
+    destination: 'public/uploads',
+    filename: function (req, file, cb) {
+        cb(null, uuidV1() + '.jpg')
     }
-    res.send("添加用户成功");
-  })
 })
 
-router.get('/all-user', function(req, res) {
-  models.User.find({}, function(err, users) {
-    if (err) {
-      return next(err);
-    } else {
-      res.json(users);
-    }
-  });
-});
+var upload = multer({storage: storage})
+
+router.get('/:name', checkLogin, function(req, res, next) {
+    models.User.findOne({name: req.params.name}, {name:1, email:1, avatar: 1}, function(err, user) {
+        if (err) {
+            next(err);
+        } else {
+            res.render('user/user', {user: user});
+        }
+    })
+})
+
+router.get('/:id/posts', checkLogin, function(req, res, next) {
+    models.Post.find({author: req.params.id}, function(err, posts) {
+        if(err) {
+            next(err);
+        } else {
+            res.writeHead(200, { "Content-Type": "application/json;charset=utf-8" });
+            res.end(JSON.stringify(posts))
+        }
+    })
+})
+
+router.post('/change-avatar', upload.single('avatar'), function(req, res, next) {
+    models.User.update({name: req.session.user.name}, {avatar: req.file.filename}, function(err, raw) {
+          if (err) return handleError(err);
+          console.log('The raw response from Mongo was ', raw);
+    })
+    res.redirect('/users/' + req.session.user.name);
+})
 
 module.exports = router;

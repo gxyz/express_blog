@@ -1,0 +1,51 @@
+extends ../layout
+
+block content
+    div(class="ui  grid")
+        div.two.wide.column
+        div.twelve.wide.column
+          section.user-info
+              div.ui.items
+                div.item
+                    div.ui.small.image
+                        img(src="/uploads/"+ user.avatar)
+                        div.change-avatar(class="ui mini green button")#change 更换
+                    div.content
+                        div.header#username= user.name
+                        div.description
+                            p= "email: " + user.email
+                            p= "描述:" + "的你帮我确定为单位不违法被吃饱穿暖我iw的呢我不能"
+          section.user-action(class="ui pointing menu")
+            a(class="item" data-tab="first") 发布的文章
+            a(class="item" data-tab="second") 发表的评论
+            a(class="item" data-tab="third") 最新消息
+
+          div(class="ui bottom attached tab segment" data-tab="first") 发表的文章
+          div(class="ui bottom attached tab segment" data-tab="second") 发表的评论
+          div(class="ui bottom attached tab segment" data-tab="third") 最新消息
+
+          div.ui.modal.standard.test
+            i.close.icon
+            div.header 更换头像
+            div.content
+              form(method="post" action="/users/change-avatar" id="form" enctype="multipart/form-data")
+                input(type="file" name="avatar")
+            div.actions
+              div.ui.red.button#confirm 确认
+              div.ui.black.button#cancel 取消
+        div.two.wide.column
+
+
+
+block script
+    script.
+        $('.menu .item').tab();
+        var username = $("username").text();
+        $('#change').click(function() {
+          $('.standard.test.modal').modal('show');
+        })
+        $("#confirm").click(function() {
+          var form = $("#form");
+          form.submit();
+        })
+

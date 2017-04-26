@@ -11,7 +11,7 @@ block content
             h1.article-title= post.title
             time= post.pub_date.toLocaleString()            
             each tag in post.tags
-                a.ui.label.black.mini.tags= tag
+                a.ui.label.black.mini.tags(href="/tags/" + tag)= tag
             div.post-content!= post.html
 
             div(class="ui comments")
@@ -20,20 +20,21 @@ block content
                     each comment in comments
                         div.comment
                             a.avatar
-                                img(src="")
+                                img(src="/uploads/" + comment.author.avatar)
                             div.content
-                                a.author= comment.author.name
+                                a.author(href="/users/"+comment.author.name)= comment.author.name
                                 div.metadata
                                     span.data= comment.pub_date.toLocaleString()
-                            div.text= comment.content
+                                div.text= comment.content
 
 
                 form(method="post" action="/posts/" + post.id class="ui reply form")
                     div.field
                         textarea(rows="3" name="content")
-                    div(class="ui blue labeled submit icon button" type="submit")
-                        i(class="icon edit")
-                        span 评论
+                    button(type="submit" class="ui black button") 评论
+                    //- div(type="submit" class="ui blue labeled submit icon button" )
+                    //-     i(class="icon edit")
+                    //-     span 评论
     div.two.wide.column
 
 block script

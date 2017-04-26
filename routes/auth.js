@@ -2,6 +2,7 @@ var sha1 = require('sha1');
 var express = require('express');
 var router = express.Router();
 var models = require("../models/post");
+
 var checkNotLogin = require('../middlewares/check').checkNotLogin;
 var checkLogin = require('../middlewares/check').checkLogin;
 
@@ -49,6 +50,7 @@ router.post('/signup', checkNotLogin, function(req, res, next) {
     var email = req.body.email;
     var password = req.body.password;
     var repassword = req.body.repassword
+    var avatar = "avatar.png"
 
     try {
         if(!(username.length >= 3 && username.length <= 15)) {
@@ -72,7 +74,8 @@ router.post('/signup', checkNotLogin, function(req, res, next) {
         name: username,
         email: email,
         password: password,
-        permission: 1
+        permission: 1,
+        avatar: avatar
     })
     user.save(function(err) {
         if (err) {

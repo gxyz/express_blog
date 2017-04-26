@@ -6,7 +6,9 @@ var userSchema = new Schema({
     name: String,
     email: String,
     password: String,
-    permission: Number
+    permission: Number,
+    avatar: String,
+    desc: String
 })
 
 var commentSchema = new Schema({
